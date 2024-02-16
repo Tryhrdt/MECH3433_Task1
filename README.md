@@ -1,2 +1,2 @@
-# MECH3433_Task1
-assignment
+# MECH3433_TaskA4_Sequence
+Building the tower in correct sequence under the rule of Hanoi Tower.
