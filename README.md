@@ -40,4 +40,6 @@ Please create a new branch from ```origin:main``` to keep track of your own chan
 * **Wi-Fi Direct** connection with robomaster in AP mode (single robomaster only)
 * **Wi-Fi** connection with the laptop in AP mode (multiple robomasters)
 
-As we plan to use multiple robomasters together, we should use a laptop as the AP and connect all the robomasters to it.
+~~As we plan to use multiple robomasters together, we should use a laptop as the AP and connect all the robomasters to it.~~
+
+**Robomaster S1 DOES NOT SUPPORT PYTHON SDK**
