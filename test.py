@@ -1,21 +1,16 @@
-import time
+
 import robomaster
-from robomaster import conn
-from MyQR import myqr
-from PIL import Image
+from robomaster import robot
 
-
-QRCODE_NAME = "qrcode.png"
 
 if __name__ == '__main__':
+        # 如果本地IP 自动获取不正确，手动指定本地IP地址
+        ep_robot = robot.Robot()
 
-    helper = conn.ConnectionHelper()
-    info = helper.build_qrcode_string(ssid="LAPTOP-RNU3B3QA_7831", password="1-O809v6")
-    myqr.run(words=info)
-    time.sleep(1)
-    img = Image.open(QRCODE_NAME)
-    img.show()
-    if helper.wait_for_connection():
-        print("Connected!")
-    else:
-        print("Connect failed!")
+        # 指定连接方式为AP 直连模式
+        ep_robot.initialize(conn_type='ap')
+
+        version = ep_robot.get_version()
+        print("Robot version: {0}".format(version))
+        ep_robot.close()
+
