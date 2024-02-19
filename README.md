@@ -30,3 +30,14 @@ After Python 3.8.10 is installed, please run ```pip intstall robomaster``` to in
 If you would like to do it within pycharm, please run ```py -m pip install robomaster``` within the terminal tab.
 
 Please create a new branch from ```origin:main``` to keep track of your own changes and refrain from merging to ```origin:main``` without testing.
+
+---
+
+##  Robomaster connection method
+
+  There are a few methods to connect the robomaster to the controlling laptop.
+  
+* **Wi-Fi Direct** connection with robomaster in AP mode (single robomaster only)
+* **Wi-Fi** connection with the laptop in AP mode (multiple robomasters)
+
+As we plan to use multiple robomasters together, we should use a laptop as the AP and connect all the robomasters to it.
