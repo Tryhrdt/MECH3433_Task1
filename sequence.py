@@ -1,8 +1,7 @@
-# Input:    Block number, Rods coordinates
-# (can block coordinates merge with rod coordinates? need third coordinates?)
+# Input:    Block number, Rods coordinates (can block coordinates merge with rod coordinates? need third coordinates?)
 # Output:   Motion to move block
 
-Block_1, Block_2, Block_3 = ['ONE','one'], ['TWO','two'], ['THREE','three']
+Block_1, Block_2, Block_3 = ['1x','1y','1z'], ['2x','2y','2z'], ['3x','3y','3z']
 #Block coordinates (import block coordinates and map into block1,2,3?)
 block = [Block_1, Block_2, Block_3] #Block List to contain all block coordinates
 num = int(3-1)
