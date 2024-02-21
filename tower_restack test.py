@@ -50,6 +50,7 @@ def grip_flow():
     grip_block(3)
     hand.open(power=300).wait_for_completed()
 
+
 if __name__ == "__main__":
     ep_robot = robot.Robot()
     ep_robot.initialize(conn_type="ap")
