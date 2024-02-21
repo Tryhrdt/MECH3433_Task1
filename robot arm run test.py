@@ -1,6 +1,4 @@
-import threading
-import numpy as np
-import cv2
+import robomaster
 from robomaster import robot, sensor, gripper
 import math, time
 
@@ -23,7 +21,7 @@ def armset(xx, yy):  # writen by Mak Ka Tsun
 def grab():  # writen by Mak Ka Tsun
     print("gripper opened")
     hand.open(power=100)
-    time.sleep(2)
+    time.sleep(3)
     print("pos 1")
     armset(75, 56)
     time.sleep(1)
@@ -83,21 +81,29 @@ def flow():
     grab()
     car_move(0,0,90)
     time.sleep(2)
-    car_move(.15,0,0)
+    car_move(.108,0,0)
     place_block_2()
-    car_move(-.15, 0, 0)
     time.sleep(1)
+    car_move(-.108, 0, 0)
+    time.sleep(2)
     car_move(0,0,-90)
 
     grab()
     car_move(0,0,90)
     time.sleep(2)
-    car_move(.3,0,0)
+    car_move(.12,0,0)
     place_block_3()
-    car_move(-0.3,0,0)
+    car_move(-0.2,0,0)
+    time.sleep(2)
+    car_move(0,0,-90)
 
 #car_move(-.2,0,0)
 flow()
+#hand.open(power=100)
+#armset(200,-100)
+#sensor = ep_robot.sensor
+#sensor.sub_distance(freq=5)
+
 
 ep_robot.close()
 print('really end')
