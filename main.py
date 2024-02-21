@@ -29,6 +29,9 @@ def positional_data_handler(sub_info):
 def vision_info_handler(sub_info):
     print(sub_info)
 
+def distance_handler(sub_info):
+    print(sub_info)
+
 # Define robot object
 if __name__ == "__main__":
     #   Using Wi-Fi Direct method to connect
@@ -37,6 +40,7 @@ if __name__ == "__main__":
 
     # initialize objects:
     ep_chassis  = ep_robot.chassis
+    ep_camera   = ep_robot.camera
     ep_vision   = ep_robot.vision
     ep_ir       = ep_robot.sensor
 
@@ -51,10 +55,19 @@ if __name__ == "__main__":
 
     # ep_chassis.move(x=0.6, y=-0.6, z=0, xy_speed=1).wait_for_completed()
 
+    # enable camera screen for debug
+    ep_camera.start_video_stream(display=True)
+
+    # enable IR
+    ep_ir.sub_distance(freq=20, callback=distance_handler)
+
+
 # TODO: get marker coordinate in frame here
 
 
 
 
     input("Press any button to quit:")
+    ep_camera.stop_video_stream()
+
     ep_robot.close()
