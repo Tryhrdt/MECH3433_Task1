@@ -1,11 +1,17 @@
 import robomaster
 from robomaster import robot, sensor, gripper
 import math, time
-ir_dist = 100
+
+detected = False
 
 def dist_handler(sub_info):
+    global detected
     ir_dist = int(sub_info[0])
-    print(ir_dist)
+    print(detected)
+    if ir_dist  <   50:
+        detected = True
+    else:
+        detected = False
 
 def car_move(xx,yy,deg):
     ep_robot.chassis.move(x=xx, y=yy, z=deg, xy_speed=.5).wait_for_completed()
@@ -57,7 +63,7 @@ if __name__ == "__main__":
     hull = ep_robot.chassis
     ep_camera = ep_robot.camera
     ep_ir     = ep_robot.sensor
-    ep_ir.sub_distance(freq=20, callback=dist_handler)
+    ep_ir.sub_distance(freq=50, callback=dist_handler)
     eye = sensor.DistanceSensor(ep_robot)
     arm = ep_robot.robotic_arm
     hand = ep_robot.gripper
@@ -65,13 +71,13 @@ if __name__ == "__main__":
     armset(200, -130)
 
     ep_camera.start_video_stream(display=True)
-    print("ir_dist:", ir_dist)
-    hull.drive_speed(x=0.1, timeout=10)
     while True:
-        if ir_dist < 100:
+        hull.drive_speed(x=0.5)
+        time.sleep(0.05)
+        if detected:
+            print("object detected")
             break
-    print("object detected")
-    hull.drive_speed(x=-1, timeout=0.001)
+    hull.drive_speed(x=-1, timeout=0.1)
     ep_camera.stop_video_stream()
 
 
