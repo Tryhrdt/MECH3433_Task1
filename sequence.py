@@ -24,13 +24,13 @@ def HanoiTower(block, source, destination, intermediate):
         print("Move the robot from current position to", source)
         # move(current, source) #move from current place to source
 
-        print("Grab", block, "at", source)
+        print("Grab Block", block, "at", source)
         # grab(block) #identify block1 and grab block1
 
         print("Move the robot from", source, 'to', destination)
         # move(source, destination) #move from source to destination
 
-        print("Release", block, "at", destination)
+        print("Release Block", block, "at", destination)
         # release(block) #release block1 above other existing blocks
 
         HanoiTower(block - 1, intermediate, destination, source)     # Move block from intermediate to destination to complete the recursive sub-system
