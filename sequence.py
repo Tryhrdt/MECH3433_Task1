@@ -1,11 +1,15 @@
 # Input:    Block number, Rods coordinates (can block coordinates merge with rod coordinates? need third coordinates?)
 # Output:   Motion to move block
 
-Block_1, Block_2, Block_3 = ['1x','1y','1z'], ['2x','2y','2z'], ['3x','3y','3z']
-#Block coordinates (import block coordinates and map into block1,2,3?)
-block = [Block_1, Block_2, Block_3] #Block List to contain all block coordinates
-num = int(3-1)
-source, destination, intermediate = ['A','a'], ['C','c'], ['B','b']   #A,B,C should be changed to rod coordinates
+#import robomaster
+#from robomaster import robot
+
+height = [ 0, 1, 2, 3 ]
+Block_1, Block_2, Block_3, Block_4 = ['1x','1y','1z'], ['2x','2y','2z'], ['3x','3y','3z'], ['4x','4y','4z']
+# Block coordinates (import block coordinates and map into block1,2,3?)
+block = [Block_1, Block_2, Block_3, Block_4] # Block List to contain all block coordinates
+num = int(3-1) # The 1 is to change the index to base-0
+source, destination, intermediate = ['Ax','Ay',height[3]], ['Cx','Cy',height[1]], ['Bx','By',height[1]]   # A,B,C should be changed to rod coordinates
 
 # Operation function to contain all actions of moving the block from source to destination/ intermediate pos (By Wong Alex Yu Hin)
 def operation(blockname, source, destination, intermediate):
@@ -13,16 +17,17 @@ def operation(blockname, source, destination, intermediate):
         print("Move the robot from current position to", source)
         # move(current, source) #move from current place to source
 
-        print("Grab", blockname, "at", source)
+        print("Grab", blockname, "at", source[0:1], "with height", source[2])
         # grab(block) #identify block and grab block
 
         print("Move the robot from", source, 'to', destination)
         # move(source, destination) #move from source to destination
 
-        print("Release", blockname, "at", destination)
+        print("Release", blockname, "at", destination[0:1], "with height", destination[2])
         # release(block) #release block on top (above other existing blocks)
 
         #print('.')
+        #source[2], destination[2] = height[], height[]
         return
 
 # Using recursive function to solve Hanoi Tower (By Wong Alex Yu Hin)
