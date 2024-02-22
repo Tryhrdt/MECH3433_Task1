@@ -34,7 +34,7 @@ def ir_handler(sub_info):
     global detect
     if sub_info[0] < 30:
         detect = True
-    else
+    else:
         detect = False
     print(detect)
 
