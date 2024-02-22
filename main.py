@@ -67,6 +67,8 @@ if __name__ == "__main__":
     # enable IR
     ep_ir.sub_distance(freq=20, callback=ir_handler)
 
+
+
     '''TODO
     Find closest vision marker,
     if vision marker is to the left, move left
