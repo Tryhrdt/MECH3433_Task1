@@ -42,36 +42,36 @@ def ir_handler(sub_info):
 # find index of the marker id
 def get_index(in_list, marker_id):
     for i in in_list:
-        if int(i[4]) == marker_id:
+        if int(i[4]) == marker_id:      #   check if item 5 of that element matches the id we want
             return in_list.index(i)
     return -1
-
 
 # align and find distance(cm)
 def align_marker(number, append=True):
     # format : [x-coord, y-coord, width of marker, height of marker, marker name]
     while True:
-        try:
+        try:    #   disregard index errors so the program doesn't crash if the markers list changes unexpectedly
             if get_index(d.markers, number) == -1:
                 # print(d.markers)
-                time.sleep(0.05)
+                time.sleep(0.05)    # if nothing is detected or the required marker is not found, 0.05s delay to
+                # prevent while loop from degrading camera feed
                 continue
-            selected_info = d.markers[get_index(d.markers, number)]
-            if 0.498 <= selected_info[0] <= 0.502:
-                ep_chassis.drive_speed(y=0.01, timeout=0.001)
+            selected_info = d.markers[get_index(d.markers, number)]     #   information of the selected vision marker
+            if 0.498 <= selected_info[0] <= 0.502:                      #   if marker is within the acceptable region of 0.004 size
+                ep_chassis.drive_speed(y=0.01, timeout=0.001)           #   brake and stop chassis
                 ep_chassis.drive_speed(y=-0.01, timeout=0.001)
-                if append:
+                if append:                  #   appends selected info to the selected
                     markers.append(
                         [selected_info[4], (current_x + d.ground_distance(selected_info[2]) / 100), current_y])
                 return
-            elif selected_info[0] <= 0.498:
+            elif selected_info[0] <= 0.498:                         #   move chassis to correct error
                 ep_chassis.drive_speed(y=-0.1)
             elif selected_info[0] >= 0.502:
                 ep_chassis.drive_speed(y=0.1)
         except:
-            ep_chassis.drive_speed(y=0.01, timeout=0.001)
+            ep_chassis.drive_speed(y=0.01, timeout=0.001)           #   stop if an exception is raised
         finally:
-            time.sleep(0.05)
+            time.sleep(0.05)                                        #   wait 0.05s regardless
     return
 
 
