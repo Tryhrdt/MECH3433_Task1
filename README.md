@@ -43,3 +43,7 @@ Please create a new branch from ```origin:main``` to keep track of your own chan
 ~~As we plan to use multiple robomasters together, we should use a laptop as the AP and connect all the robomasters to it.~~
 
 **Robomaster S1 DOES NOT SUPPORT PYTHON SDK**
+
+##		Completed Code
+
+	Only the files main.py, distance.py and robot_gripper.py is used for task 4.
