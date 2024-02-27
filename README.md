@@ -46,4 +46,4 @@ Please create a new branch from ```origin:main``` to keep track of your own chan
 
 ##		Completed Code
 
-	Only the files main.py, distance.py and robot_gripper.py is used for task 4.
+	Only the files main.py, distance.py and robot_grip_v2.py is used for task 4.
