@@ -1,8 +1,9 @@
 import time
 import math
-from robomaster import robot
 
+# from robomaster import robot  #for testing
 
+# unused
 # class MarkerInfo:
 #     def __init__(self, x, y, w, h, info):
 #         self._x = x
@@ -12,8 +13,8 @@ from robomaster import robot
 #         self._info = info
 
 
-markers = []
-timer = 0
+markers = []  # eventually unreferenced in main program, as d.markers would be required
+timer = 0  # planned to provide speed estimation
 
 
 #   calculate distance based on marker width and trigo, cm
@@ -38,9 +39,7 @@ def ground_distance(w):
     height = 34.5
     return math.sqrt((calculate_distance(w) ** 2) - (height ** 2))  # pyth. theorem : hyp^2 - height^2 = base^2
 
-
-
-# if __name__ == '__main__':
+# if __name__ == '__main__':    #   testing code
 #     ep_robot = robot.Robot()
 #     ep_robot.initialize(conn_type="ap")
 #
